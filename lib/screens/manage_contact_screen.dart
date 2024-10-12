@@ -9,15 +9,15 @@ class ManageContactScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final nameController = TextEditingController();
-    final emailController = TextEditingController();
     final phoneController = TextEditingController();
+    final emailController = TextEditingController();
     final existingContact =
         ModalRoute.of(context)!.settings.arguments as Contact?;
     final isEdit = existingContact != null;
     if (isEdit) {
       nameController.text = existingContact.name;
-      emailController.text = existingContact.email;
       phoneController.text = existingContact.phone;
+      emailController.text = existingContact.email;
     }
     return Scaffold(
         backgroundColor: Colors.black,
@@ -31,35 +31,35 @@ class ManageContactScreen extends StatelessWidget {
               TextField(
                 controller: nameController,
                 decoration: const InputDecoration(
-                  labelText: 'name',
-                ),
-              ),
-              TextField(
-                controller: emailController,
-                decoration: const InputDecoration(
-                  labelText: 'email',
+                  labelText: 'Name',
                 ),
               ),
               TextField(
                 controller: phoneController,
                 decoration: const InputDecoration(
-                  labelText: 'phone',
+                  labelText: 'Personal',
+                ),
+              ),
+              TextField(
+                controller: emailController,
+                decoration: const InputDecoration(
+                  labelText: 'Email',
                 ),
               ),
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
                   final name = nameController.text;
-                  final email = emailController.text;
                   final phone = phoneController.text;
+                  final email = emailController.text;
 
                   final newContact = Contact(
                     id: isEdit
                         ? existingContact.id
                         : DateTime.now().microsecondsSinceEpoch,
                     name: name,
-                    email: email,
                     phone: phone,
+                    email: email,
                   );
 
                   if (isEdit) {

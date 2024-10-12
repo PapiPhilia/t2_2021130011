@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:t2_2021130011/models/contact.dart';
 
 class ContactProvider extends ChangeNotifier {
-  final List<Contact> _contacts = []; //atribut state
-  List<Contact> get contacts => _contacts; //deklarasi getter
+  final List<Contact> _contacts = [];
+  List<Contact> get contacts => _contacts;
 
   void addContact(Contact contact) {
     _contacts.add(contact);
