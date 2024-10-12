@@ -3,11 +3,15 @@ import 'package:provider/provider.dart';
 import 'package:t2_2021130011/providers/contact_provider.dart';
 import 'package:t2_2021130011/screens/manage_contact_screen.dart';
 
-// @override
-//   State<HomeScreen> createState() => _HomeScreen();
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreen();
+}
+
+class _HomeScreen extends State<HomeScreen> {
+  String selectedPage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +28,34 @@ class HomeScreen extends StatelessWidget {
             },
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 23, 128, 219),
+              ),
+              child: Text(
+                'Contact',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+              ),
+            ),
+          ListTile(
+            leading: const Icon(Icons.book),
+              title: const Text('Contact App'),
+              onTap: () {
+                setState(() {
+                  selectedPage = 'Contact';
+                });
+              },
+          ),
+          ],
+        ),
       ),
       body: Consumer<ContactProvider>(
         builder: (context, value, child) {
